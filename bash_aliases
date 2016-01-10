@@ -1,12 +1,8 @@
 al () {
 
-  RED=$(tput setaf 1)
-  GREEN=$(tput setaf 2)
-  RESET=$(tput sgr 0)
-
   if [[ $# -eq 0 || $1 == "al" ]]; then
       if [ $1 ]; then
-        echo "${RED}ERROR: 'al' is a reserved name. $(tput sgr 0)${RESET}" >&2
+        echo "# ERROR: 'al' is a reserved name." >&2
       fi
       echo 'Usage: al <new_alias>' >&2
       return
@@ -20,7 +16,7 @@ al () {
 
   for a in ${cur}; do
     if [[ ${a} == ${1} ]]; then
-      echo "${a} already exists:"
+      echo -n "# ERROR: "
       type ${a}
       echo -n "Overwrite? (y/N): "
       read answer
@@ -36,7 +32,9 @@ al () {
 
   # add and activate new alias
   echo "alias ${1}='${lc}'" >> ~/.bash_aliases
-  echo "created alias ${GREEN}${1}${RESET} for ${GREEN}${lc}${RESET}"
+  echo "created alias '${1}' for '{lc}'"
   source ~/.bashrc
 
 }
+
+# ALIASES
