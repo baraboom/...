@@ -32,7 +32,7 @@ al () {
 
   # add and activate new alias
   echo "alias ${1}='${lc}'" >> ~/.bash_aliases
-  echo "created alias '${1}' for '{lc}'"
+  echo "created alias '${1}' for '${lc}'"
   source ~/.bashrc
 
 }
